@@ -24,7 +24,7 @@ export default function Header(props: HeaderProps) {
                     {title}
                 </Typography>
             </Toolbar>
-            <Toolbar component="nav" variant="dense" sx={{justifyContent: 'space-between', overflowX: 'auto' }}>
+            <Toolbar component="nav" variant="dense" sx={{justifyContent: 'space-between', overflowX: 'auto'}}>
                 {sections.map((section) => (
                     <Link
                         color="#FFFFFF"

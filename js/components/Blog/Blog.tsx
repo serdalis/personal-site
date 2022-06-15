@@ -10,7 +10,7 @@ import Main from './Main';
 import Sidebar from './Sidebar';
 import Footer from './Footer';
 import {post1, post2, post3} from '../../../blogs';
-import { Code, LinkedIn } from '@mui/icons-material';
+import {Code, LinkedIn} from '@mui/icons-material';
 import {MyTheme} from './MyThemes';
 
 const sections = [
@@ -52,13 +52,11 @@ const sidebar = {
     title: 'About',
     description:
         'Fancy webpage that most developers need, this one is hastily build and heavily underpopulated, but at least theres a rotating star written in webGL back there so thats cool.',
-    archives: [
-        {title: 'There is nothing', url: '#'},
-    ],
+    archives: [{title: 'There is nothing', url: '#'}],
     social: [
-        {name: 'GitHub', icon: GitHubIcon},
-        {name: 'LinkedIn', icon: LinkedIn},
-        {name: 'StackOverflow', icon: Code},
+        {name: 'GitHub', icon: GitHubIcon, url: 'https://github.com/serdalis'},
+        {name: 'LinkedIn', icon: LinkedIn, url: 'https://www.linkedin.com/in/ricky-neil/'},
+        {name: 'StackOverflow', icon: Code, url: 'https://stackoverflow.com/users/958051/serdalis'},
     ],
 };
 

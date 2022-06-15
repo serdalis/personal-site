@@ -5,7 +5,7 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import styled from '@emotion/styled';
-import { useTheme } from '@emotion/react';
+import {useTheme} from '@emotion/react';
 interface SidebarProps {
     archives: ReadonlyArray<{
         url: string;
@@ -15,17 +15,19 @@ interface SidebarProps {
     social: ReadonlyArray<{
         icon: React.ElementType;
         name: string;
+        url: string;
     }>;
     title: string;
 }
-
-
 
 export default function Sidebar(props: SidebarProps) {
     const theme = useTheme();
     const {archives, description, social, title} = props;
 
-    const NicePaper = styled(Paper)`padding: 1rem; margin-bottom: 3rem;`;
+    const NicePaper = styled(Paper)`
+        padding: 1rem;
+        margin-bottom: 3rem;
+    `;
 
     return (
         <Grid item xs={12} md={4}>
@@ -50,7 +52,7 @@ export default function Sidebar(props: SidebarProps) {
                     Social
                 </Typography>
                 {social.map((network) => (
-                    <Link display="block" variant="body1" href="#" key={network.name} sx={{mb: 0.5}}>
+                    <Link display="block" variant="body1" href={network.url} key={network.name} sx={{mb: 0.5}}>
                         <Stack direction="row" spacing={1} alignItems="center">
                             <network.icon />
                             <span>{network.name}</span>

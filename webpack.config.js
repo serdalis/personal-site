@@ -85,8 +85,8 @@ module.exports = (env, argv) => {
             plugins: [
                 ...defaultPlugins,
                 new HtmlWebpackPlugin({
-                    title: 'Serdalis',
-                    filename: path.join(__dirname, 'compiled/serdalis.html'),
+                    title: 'Blog Construction',
+                    filename: path.join(__dirname, 'compiled/index.html'),
                     template: 'html/template.html',
                     hash: true,
                     inject: 'body'
