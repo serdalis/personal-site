@@ -1,0 +1,6 @@
+﻿bin
+obj
+.vscode
+node_modules
+wwwroot
+compiled
