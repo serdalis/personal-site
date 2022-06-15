@@ -1,3 +1,5 @@
+/* Need to convert to the new threejs postprocessing module... */
+
 var GlowShader = {
     uniforms: {
         time: {type: 'f', value: 0.0},
