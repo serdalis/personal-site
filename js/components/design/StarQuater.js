@@ -8,7 +8,7 @@ const StarQuater = forwardRef(({position, initialRotation}, ref) => {
     const currentRotation = degToRad(initialRotation);
     const scaleV3 = new Vector3(5, 5, 1);
     const positionV3 = new Vector3(...position);
-    const url = data.Clouds;
+    const url = data.clouds;
     const mapped = useRef();
 
     const shape = useMemo(() => {
