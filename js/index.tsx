@@ -10,7 +10,7 @@ const Background = () => {
         <Canvas
             className="three-canvas"
             onCreated={({gl}) => {
-                gl.setClearColor(new THREE.Color('#000000'));
+                gl.setClearColor(new THREE.Color('#121B27'));
             }}
             camera={{position: new THREE.Vector3(0, 0, 6)}}
         >

@@ -5,7 +5,7 @@ import {grey} from '@mui/material/colors';
 import styled from '@emotion/styled';
 import {Paper, Typography} from '@mui/material';
 import {nanoid} from 'nanoid';
-import {useTheme} from '@emotion/react';
+import { useTheme } from '@mui/material';
 
 interface MainProps {
     posts: ReadonlyArray<string>;
@@ -52,7 +52,7 @@ const Main = (props: MainProps) => {
                 <Typography variant='h3'>{title}</Typography>
             </NiceHeadingPaper>*/}
             {postContent.map((post) => (
-                <NicePaper key={nanoid()}>
+                <NicePaper key={nanoid()} elevation={3}>
                     <Markdown className="markdown">{post}</Markdown>
                 </NicePaper>
             ))}

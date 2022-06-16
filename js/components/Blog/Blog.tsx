@@ -37,7 +37,7 @@ const featuredPosts = [
         description: 'Hack the box, and now HTB University are my favourite general purpose security learning sites.',
         image: data.htbLogo,
         imageLabel: 'Hack The Box',
-        url: 'https://www.hackthebox.com/',
+        url: 'https://app.hackthebox.com/profile/75264',
     },
     {
         title: 'SecureFlag',

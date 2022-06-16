@@ -1,11 +1,20 @@
-import {grey} from '@mui/material/colors';
+import {blue, grey} from '@mui/material/colors';
 
 const MyTheme = {
     palette: {
-        type: 'light',
+        type: 'dark',
         primary: {
-            main: grey[900],
+            main: grey[50],
         },
+        secondary: {
+            main: blue[400],
+        },
+        background: {
+            paper: '#262E3D'
+        },
+        text: {
+            secondary: '#6A7382'
+        }
     },
     typography: {
         fontFamily: [

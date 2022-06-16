@@ -28,6 +28,7 @@ export default function MainFeaturedPost(props: MainFeaturedPostProps) {
                 backgroundPosition: 'right',
                 backgroundImage: `url(${post.image})`,
             }}
+            elevation={3}
         >
             {/* Increase the priority of the hero background image */}
             {<img style={{display: 'none'}} src={post.image} alt={post.imageText} />}
@@ -49,10 +50,10 @@ export default function MainFeaturedPost(props: MainFeaturedPostProps) {
                             pr: {md: 0},
                         }}
                     >
-                        <Typography component="h1" variant="h3" color="inherit" gutterBottom>
+                        <Typography component="h1" variant="h3" color="primary" gutterBottom>
                             {post.title}
                         </Typography>
-                        <Typography variant="h5" color="inherit" paragraph>
+                        <Typography variant="h5" color="primary" paragraph>
                             {post.description}
                         </Typography>
                         <Link variant="subtitle1" href="#">

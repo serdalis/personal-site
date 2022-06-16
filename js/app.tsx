@@ -6,10 +6,11 @@ import {Sun} from './components/design/Sun';
 import {StarQuater} from './components/design/StarQuater';
 import {EffectComposer, Bloom, GodRays} from '@react-three/postprocessing';
 import {BlendFunction, Resolution, KernelSize} from 'postprocessing';
-import {Group, sRGBEncoding} from 'three';
+import {Group, sRGBEncoding, Clock} from 'three';
 
 export function App() {
-    const RotationSpeed = 0.00004;
+    const clock = new Clock();
+    const RotationSpeed = 0.025;
     const {camera, gl} = useThree();
     const [light, setLight] = useState();
     const [q1, setQ1] = useState();
@@ -17,26 +18,21 @@ export function App() {
     const [q3, setQ3] = useState();
     const [q4, setQ4] = useState();
 
-    let last = performance.now();
-
     useEffect(() => void (gl.outputEncoding = sRGBEncoding));
 
     useFrame(() => {
-        const now = performance.now();
-        const interval = now - last;
-        const rotationDelta = RotationSpeed * interval;
+        const interval = clock.getDelta();
+        const rotationDeltaZ = RotationSpeed * interval;
 
-        if (q1) (q1 as GroupProps).rotateZ(rotationDelta);
-        if (q2) (q2 as GroupProps).rotateZ(rotationDelta);
-        if (q3) (q3 as GroupProps).rotateZ(rotationDelta);
-        if (q4) (q4 as GroupProps).rotateZ(rotationDelta);
-
-        last = now;
+        if (q1) (q1 as GroupProps).rotateZ(rotationDeltaZ);
+        if (q2) (q2 as GroupProps).rotateZ(rotationDeltaZ);
+        if (q3) (q3 as GroupProps).rotateZ(rotationDeltaZ);
+        if (q4) (q4 as GroupProps).rotateZ(rotationDeltaZ);
     });
 
     return (
         <>
-            <Plane color={'#272727'} />
+            {/*<Plane color={'#FFFFFF'} />*/}
             <pointLight intensity={50} position={[0, 0, 0.25]} color={'#2080B0'} decay={0} />
             {/*@ts-ignore*/}
             <Sun ref={setLight} position={[0, 0, -0.01]} />

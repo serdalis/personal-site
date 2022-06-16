@@ -6,7 +6,7 @@ const Sun = forwardRef(({position}, ref) => {
 
     return (
         <mesh ref={ref} position={positionV3}>
-            <sphereGeometry attach="geometry" attachObject={['attributes', 'position']} args={[0.05, 16, 16]} />
+            <sphereGeometry attach="geometry" attachObject={['attributes', 'position']} args={[0.1, 16, 16]} />
             <meshPhongMaterial attach="material" color="white" />
         </mesh>
     );

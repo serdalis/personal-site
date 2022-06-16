@@ -23,18 +23,18 @@ export default function FeaturedPost(props: FeaturedPostProps) {
     return (
         <Grid item xs={12} md={6}>
             <CardActionArea component="a" href={post.url}>
-                <Card sx={{display: 'flex'}}>
+                <Card sx={{display: 'flex'}} elevation={3}>
                     <CardContent sx={{flex: 1}}>
-                        <Typography component="h2" variant="h5">
+                        <Typography component="h2" color="primary" variant="h5">
                             {post.title}
                         </Typography>
                         <Typography variant="subtitle1" color="text.secondary">
                             {post.date}
                         </Typography>
-                        <Typography variant="subtitle1" paragraph>
+                        <Typography variant="subtitle1" color="primary" paragraph>
                             {post.description}
                         </Typography>
-                        <Typography variant="subtitle1" color="primary">
+                        <Typography variant="subtitle1" color="secondary">
                             Go to Site
                         </Typography>
                     </CardContent>
