@@ -3,8 +3,9 @@ import Grid from '@mui/material/Grid';
 import Markdown from './Markdown';
 import {grey} from '@mui/material/colors';
 import styled from '@emotion/styled';
-import {Paper} from '@mui/material';
+import {Paper, Typography} from '@mui/material';
 import {nanoid} from 'nanoid';
+import {useTheme} from '@emotion/react';
 
 interface MainProps {
     posts: ReadonlyArray<string>;
@@ -17,6 +18,7 @@ const fetchContent = async (url: string): Promise<string> => {
 };
 
 const Main = (props: MainProps) => {
+    const theme = useTheme();
     const {posts, title} = props;
     const [postContent, setPostContent] = React.useState([]);
 
@@ -27,6 +29,12 @@ const Main = (props: MainProps) => {
     const NicePaper = styled(Paper)`
         padding: 1rem;
         margin-bottom: 3rem;
+    `;
+
+    const NiceHeadingPaper = styled(Paper)`
+        padding: 1rem;
+        margin-bottom: 1rem;
+        text-align: center;
     `;
 
     return (
@@ -40,6 +48,9 @@ const Main = (props: MainProps) => {
                 },
             }}
         >
+            {/*<NiceHeadingPaper>
+                <Typography variant='h3'>{title}</Typography>
+            </NiceHeadingPaper>*/}
             {postContent.map((post) => (
                 <NicePaper key={nanoid()}>
                     <Markdown className="markdown">{post}</Markdown>

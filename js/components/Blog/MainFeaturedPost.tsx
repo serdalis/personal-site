@@ -22,12 +22,10 @@ export default function MainFeaturedPost(props: MainFeaturedPostProps) {
         <Paper
             sx={{
                 position: 'relative',
-                backgroundColor: 'grey.800',
-                color: '#fff',
                 mb: 4,
-                backgroundSize: 'cover',
+                backgroundSize: 'contain',
                 backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'center',
+                backgroundPosition: 'right',
                 backgroundImage: `url(${post.image})`,
             }}
         >
@@ -40,7 +38,6 @@ export default function MainFeaturedPost(props: MainFeaturedPostProps) {
                     bottom: 0,
                     right: 0,
                     left: 0,
-                    backgroundColor: 'rgba(0,0,0,.3)',
                 }}
             />
             <Grid container>

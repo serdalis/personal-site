@@ -8,11 +8,12 @@ import MainFeaturedPost from './MainFeaturedPost';
 import FeaturedPost from './FeaturedPost';
 import Main from './Main';
 import Sidebar from './Sidebar';
-import Footer from './Footer';
-import {post1, post2, post3} from '../../../blogs';
+import {post1} from '../../../blogs';
 import {Code, LinkedIn} from '@mui/icons-material';
 import {MyTheme} from './MyThemes';
 import data from '../../data';
+import {Paper, Typography} from '@mui/material';
+import styled from '@emotion/styled';
 
 const sections = [
     {title: 'General', url: '#'},
@@ -22,32 +23,33 @@ const sections = [
 ];
 
 const mainFeaturedPost = {
-    title: 'Title of a longer featured blog post',
-    description:
-        "Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents.",
-    image: data.crystal,
-    imageText: 'main image description',
-    linkText: 'Continue reading…',
+    title: 'Welcome to my website!',
+    description: "This exists so I have a web presence. It'll impove over time!",
+    image: data.star,
+    imageText: 'Hero Image',
+    linkText: '',
 };
 
 const featuredPosts = [
     {
-        title: 'Featured post',
-        date: 'Nov 12',
-        description: 'This is a wider card with supporting text below as a natural lead-in to additional content.',
-        image: data.flower,
-        imageLabel: 'Image Text',
+        title: 'Hack The Box',
+        date: 'June 16',
+        description: 'Hack the box, and now HTB University are my favourite general purpose security learning sites.',
+        image: data.htbLogo,
+        imageLabel: 'Hack The Box',
+        url: 'https://www.hackthebox.com/',
     },
     {
-        title: 'Post title',
-        date: 'Nov 11',
-        description: 'This is a wider card with supporting text below as a natural lead-in to additional content.',
-        image: data.flower,
+        title: 'SecureFlag',
+        date: 'June 16',
+        description: 'SecureFlag has a great selection of courses to teach developers about secure coding.',
+        image: data.secureFlagLogo,
         imageLabel: 'Image Text',
+        url: 'https://www.secureflag.com/index.html#home',
     },
 ];
 
-const posts = [post1, post2, post3];
+const posts = [post1];
 
 const sidebar = {
     title: 'About',
@@ -64,20 +66,29 @@ const sidebar = {
 const theme = createTheme(MyTheme);
 
 export default function Blog() {
+    const NiceHeadingPaper = styled(Paper)`
+        padding: 1rem;
+        margin-bottom: 1rem;
+        text-align: center;
+    `;
+
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline />
             <Container maxWidth="lg">
-                <Header title="Ricky Neil Completely Unfinished Blog" sections={sections} />
+                <Header title="Ricky Neil's Unfinished Blog" sections={sections} />
                 <main>
                     <MainFeaturedPost post={mainFeaturedPost} />
+                    {/*<NiceHeadingPaper>
+                        <Typography variant='h3'>Featured Tools</Typography>
+                    </NiceHeadingPaper>*/}
                     <Grid container spacing={4}>
                         {featuredPosts.map((post) => (
                             <FeaturedPost key={post.title} post={post} />
                         ))}
                     </Grid>
                     <Grid container spacing={5} sx={{mt: 3}}>
-                        <Main title="From the firehose" posts={posts} />
+                        <Main title="Bites of wisdom" posts={posts} />
                         <Sidebar
                             title={sidebar.title}
                             description={sidebar.description}

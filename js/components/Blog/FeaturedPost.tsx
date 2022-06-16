@@ -13,6 +13,7 @@ interface FeaturedPostProps {
         image: string;
         imageLabel: string;
         title: string;
+        url: string;
     };
 }
 
@@ -21,7 +22,7 @@ export default function FeaturedPost(props: FeaturedPostProps) {
 
     return (
         <Grid item xs={12} md={6}>
-            <CardActionArea component="a" href="#">
+            <CardActionArea component="a" href={post.url}>
                 <Card sx={{display: 'flex'}}>
                     <CardContent sx={{flex: 1}}>
                         <Typography component="h2" variant="h5">
@@ -34,12 +35,17 @@ export default function FeaturedPost(props: FeaturedPostProps) {
                             {post.description}
                         </Typography>
                         <Typography variant="subtitle1" color="primary">
-                            Continue reading...
+                            Go to Site
                         </Typography>
                     </CardContent>
                     <CardMedia
                         component="img"
-                        sx={{width: 160, display: {xs: 'none', sm: 'block'}}}
+                        sx={{
+                            width: 160,
+                            display: {xs: 'none', sm: 'block'},
+                            objectFit: 'scale-down',
+                            backgroundColor: '#000',
+                        }}
                         image={post.image}
                         alt={post.imageLabel}
                     />
