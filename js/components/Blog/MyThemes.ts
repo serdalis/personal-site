@@ -10,7 +10,7 @@ const MyTheme = {
             main: blue[400],
         },
         background: {
-            paper: '#262E3D'
+            paper: '#202938'
         },
         text: {
             secondary: '#6A7382'

@@ -8,7 +8,7 @@ import MainFeaturedPost from './MainFeaturedPost';
 import FeaturedPost from './FeaturedPost';
 import Main from './Main';
 import Sidebar from './Sidebar';
-import {post1} from '../../../blogs';
+import {post1, post2, post3, post4} from '../../../blogs';
 import {Code, LinkedIn} from '@mui/icons-material';
 import {MyTheme} from './MyThemes';
 import data from '../../data';
@@ -49,7 +49,7 @@ const featuredPosts = [
     },
 ];
 
-const posts = [post1];
+const posts = [post1, post2, post3, post4];
 
 const sidebar = {
     title: 'About',

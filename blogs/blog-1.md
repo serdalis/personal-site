@@ -1,46 +1,10 @@
-# Sample blog post
+# Thales
+In my first job working with real time simulation, I had to discover how to efficiently move data between a desktop computer and an inbuilt processing card which had its own CPU and memory space.  
+I had to develop my own checksum / encoding and compression libraries to work with both the Little Endian PC and the Big Endian PowerPC Processor.  
+I also implemented a custom RS485 communication layer to transfer data between peripheral devices.
+ 
+The biggest challenge in this job was to develop a snapshot / record and replay system for the simulator, which had to take the current state of the memory on the powerPC card, transfer it to the main PC and send it over UDP to an external computer where it would be time synced with the video and audio... and then doing the exact opposite to replay the simulation state.
+ 
+This doesn't sound incredibly hard, except, the maximum transfer speed between the PC and the PowerPC card was 1.2MB/s, which necessitated very aggressive compression and encoding of the memory.
 
-_April 1, 2020 by [Olivier](/)_
-
-This blog post shows a few different types of content that are supported and styled with
-Material styles. Basic typography, images, and code are all supported.
-You can extend these by modifying `Markdown.js`.
-
-Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.
-Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.
-
-Curabitur blandit tempus porttitor. **Nullam quis risus eget urna mollis** ornare vel eu leo.
-Nullam id dolor id nibh ultricies vehicula ut id elit.
-
-Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum.
-Aenean lacinia bibendum nulla sed consectetur.
-
-## Heading
-
-Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
-Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
-Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-
-### Sub-heading 1
-
-Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-
-### Sub-heading 2
-
-Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod.
-Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo
-sit amet risus.
-
-- Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
-- Donec id elit non mi porta gravida at eget metus.
-- Nulla vitae elit libero, a pharetra augue.
-
-Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.
-
-1. Vestibulum id ligula porta felis euismod semper.
-1. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-1. Maecenas sed diam eget risus varius blandit sit amet non magna.
-
-Cras mattis consectetur purus sit amet fermentum. Sed posuere consectetur est at lobortis.
+There was a lot more involved in this job, including designing and procuring the networking hardware, Desktop PC hardware / servers and configuring the base OS, but it's less interesting to talk about.

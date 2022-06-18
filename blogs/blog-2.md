@@ -1,17 +1,8 @@
-# Another blog post
-
-_March 23, 2020 by [Matt](/)_
-
-Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.
-Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.
-
-Curabitur blandit tempus porttitor. **Nullam quis risus eget urna mollis** ornare vel eu leo.
-Nullam id dolor id nibh ultricies vehicula ut id elit.
-
-Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum.
-Aenean lacinia bibendum nulla sed consectetur.
-
-Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
-Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
-Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+# About Me
+I love computers and solving problems.  
+I specialise in solving complex problems that require diving deep into the problem space and attempting to figure out the solution that meets as many objectives as possible.
+ 
+I am a highly skilled software engineer with more than 11 years in professional software design, development and integration.  
+I have used the last few years to hone my ability to write error resistant code which can be easily monitored, maintained and configured.
+ 
+On top of that I’ve had the opportunity to be the first security engineer in Campaign Monitors security team, working from the ground up to implement security checks and systems to secure the application, infrastructure, internal tooling and supply chain from malicious actors.
