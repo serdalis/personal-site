@@ -10,11 +10,11 @@ const MyTheme = {
             main: blue[400],
         },
         background: {
-            paper: '#202938'
+            paper: '#202938',
         },
         text: {
-            secondary: '#6A7382'
-        }
+            secondary: '#6A7382',
+        },
     },
     typography: {
         fontFamily: [

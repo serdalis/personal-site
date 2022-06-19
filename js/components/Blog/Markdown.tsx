@@ -3,8 +3,7 @@ import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import Box from '@mui/material/Box';
 import styled from '@emotion/styled';
-import { useTheme } from '@mui/material';
-
+import {useTheme} from '@mui/material';
 
 const Markdown = (props: any) => {
     const theme = useTheme();
@@ -12,9 +11,11 @@ const Markdown = (props: any) => {
     function MarkdownListItem(props: any) {
         return <Box component="li" sx={{mt: 1, typography: 'body1'}} {...props} />;
     }
-    
-    const VisibleLink = styled(Link)`color: ${theme.palette.secondary.main};`;
-    
+
+    const VisibleLink = styled(Link)`
+        color: ${theme.palette.secondary.main};
+    `;
+
     const options = {
         overrides: {
             h1: {
@@ -52,8 +53,8 @@ const Markdown = (props: any) => {
             },
         },
     };
-    
+
     return <ReactMarkdown options={options} {...props} />;
-}
+};
 
 export default Markdown;

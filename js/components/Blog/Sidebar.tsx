@@ -5,7 +5,7 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import styled from '@emotion/styled';
-import { useTheme } from '@mui/material';
+import {useTheme} from '@mui/material';
 
 interface SidebarProps {
     archives: ReadonlyArray<{
@@ -28,19 +28,19 @@ export default function Sidebar(props: SidebarProps) {
     const NicePaper = styled(Paper)`
         padding: 1rem;
         margin-bottom: 3rem;
-        background-color: ${theme.palette.background.paper}
+        background-color: ${theme.palette.background.paper};
     `;
 
     return (
         <Grid item xs={12} md={4}>
             <NicePaper elevation={3}>
-                <Typography variant="h5" color='primary' gutterBottom>
+                <Typography variant="h5" color="primary" gutterBottom>
                     {title}
                 </Typography>
-                <Typography color='primary'>{description}</Typography>
+                <Typography color="primary">{description}</Typography>
             </NicePaper>
             <NicePaper elevation={3}>
-                <Typography variant="h5" color='primary' gutterBottom>
+                <Typography variant="h5" color="primary" gutterBottom>
                     Archives
                 </Typography>
                 {archives.map((archive) => (
@@ -50,11 +50,18 @@ export default function Sidebar(props: SidebarProps) {
                 ))}
             </NicePaper>
             <NicePaper elevation={3}>
-                <Typography variant="h5" color='primary' gutterBottom>
+                <Typography variant="h5" color="primary" gutterBottom>
                     Social
                 </Typography>
                 {social.map((network) => (
-                    <Link display="block" variant="body1" color="secondary" href={network.url} key={network.name} sx={{mb: 0.5}}>
+                    <Link
+                        display="block"
+                        variant="body1"
+                        color="secondary"
+                        href={network.url}
+                        key={network.name}
+                        sx={{mb: 0.5}}
+                    >
                         <Stack direction="row" spacing={1} alignItems="center">
                             <network.icon />
                             <span>{network.name}</span>

@@ -1,0 +1,404 @@
+import {Effect, LuminancePass, KawaseBlurPass} from 'postprocessing';
+import { WebGLRenderer, WebGLRenderTarget } from 'three';
+
+/**
+ * A glow effect.
+ */
+export class GlowEffect extends Effect {
+    /**
+     * Constructs a new glow effect.
+     *
+     * @param {Object} [options] - The options.
+     * @param {BlendFunction} [options.blendFunction=BlendFunction.SCREEN] - The blend function of this effect.
+     * @param {Number} [options.luminanceThreshold=0.9] - The luminance threshold. Raise this value to mask out darker elements in the scene. Range is [0, 1].
+     * @param {Number} [options.luminanceSmoothing=0.025] - Controls the smoothness of the luminance threshold. Range is [0, 1].
+     * @param {Number} [options.resolutionScale=0.5] - Deprecated. Use height or width instead.
+     * @param {Number} [options.intensity=1.0] - The intensity.
+     * @param {Number} [options.width=Resolution.AUTO_SIZE] - The render width.
+     * @param {Number} [options.height=Resolution.AUTO_SIZE] - The render height.
+     * @param {KernelSize} [options.kernelSize=KernelSize.LARGE] - The blur kernel size.
+     */
+    constructor({
+        blendFunction,
+        luminanceThreshold,
+        luminanceSmoothing,
+        resolutionScale,
+        intensity,
+        width,
+        height,
+        kernelSize,
+    }?: GlowEffectOptions);
+    /**
+     * A luminance shader pass.
+     *
+     * This pass can be disabled to skip luminance filtering.
+     *
+     * @type {LuminancePass}
+     */
+    luminancePass: LuminancePass;
+    /**
+     * A blur pass.
+     *
+     * @type {KawaseBlurPass}
+     */
+    blurPass: KawaseBlurPass;
+    /**
+     * A texture that contains the intermediate result of this effect.
+     *
+     * @type {Texture}
+     */
+    get texture(): Texture;
+    /**
+     * Returns the generated bloom texture.
+     *
+     * @deprecated Use texture instead.
+     * @return {Texture} The texture.
+     */
+    getTexture(): Texture;
+    /**
+     * The resolution of this effect.
+     *
+     * @type {Resolution}
+     */
+    get resolution(): Resolution;
+    /**
+     * Returns the resolution settings.
+     *
+     * @deprecated Use resolution instead.
+     * @return {Resolution} The resolution.
+     */
+    getResolution(): Resolution;
+    /**
+     * Returns the blur pass.
+     *
+     * @deprecated Use blurPass instead.
+     * @return {KawaseBlurPass} The blur pass.
+     */
+    getBlurPass(): KawaseBlurPass;
+    /**
+     * Returns the luminance pass.
+     *
+     * @deprecated Use luminancePass instead.
+     * @return {LuminancePass} The luminance pass.
+     */
+    getLuminancePass(): LuminancePass;
+    /**
+     * The luminance material.
+     *
+     * @type {LuminanceMaterial}
+     */
+    get luminanceMaterial(): LuminanceMaterial;
+    /**
+     * Returns the luminance material.
+     *
+     * @deprecated Use luminanceMaterial instead.
+     * @return {LuminanceMaterial} The material.
+     */
+    getLuminanceMaterial(): LuminanceMaterial;
+    set width(arg: number);
+    /**
+     * The current width of the internal render targets.
+     *
+     * @type {Number}
+     * @deprecated Use resolution.width instead.
+     */
+    get width(): number;
+    set height(arg: number);
+    /**
+     * The current height of the internal render targets.
+     *
+     * @type {Number}
+     * @deprecated Use resolution.height instead.
+     */
+    get height(): number;
+    set dithering(arg: boolean);
+    /**
+     * Indicates whether dithering is enabled.
+     *
+     * @type {Boolean}
+     * @deprecated Use EffectPass.fullscreenMaterial.dithering instead.
+     */
+    get dithering(): boolean;
+    set kernelSize(arg: KernelSize);
+    /**
+     * The blur kernel size.
+     *
+     * @type {KernelSize}
+     * @deprecated Use blurPass.kernelSize instead.
+     */
+    get kernelSize(): KernelSize;
+    set distinction(arg: number);
+    /**
+     * @type {Number}
+     * @deprecated Use luminanceMaterial instead.
+     */
+    get distinction(): number;
+    set intensity(arg: number);
+    /**
+     * The bloom intensity.
+     *
+     * @type {Number}
+     */
+    get intensity(): number;
+    /**
+     * The bloom intensity.
+     *
+     * @deprecated Use intensity instead.
+     * @return {Number} The intensity.
+     */
+    getIntensity(): number;
+    /**
+     * Sets the bloom intensity.
+     *
+     * @deprecated Use intensity instead.
+     * @param {Number} value - The intensity.
+     */
+    setIntensity(value: number): void;
+    /**
+     * Returns the current resolution scale.
+     *
+     * @return {Number} The resolution scale.
+     * @deprecated Use resolution instead.
+     */
+    getResolutionScale(): number;
+    /**
+     * Sets the resolution scale.
+     *
+     * @param {Number} scale - The new resolution scale.
+     * @deprecated Use resolution instead.
+     */
+    setResolutionScale(scale: number): void;
+    /**
+     * Updates this effect.
+     *
+     * @param {WebGLRenderer} renderer - The renderer.
+     * @param {WebGLRenderTarget} inputBuffer - A frame buffer that contains the result of the previous pass.
+     * @param {Number} [deltaTime] - The time between the last frame and the current one in seconds.
+     */
+    update(renderer: WebGLRenderer, inputBuffer: WebGLRenderTarget, deltaTime?: number): void;
+    /**
+     * Updates the size of internal render targets.
+     *
+     * @param {Number} width - The width.
+     * @param {Number} height - The height.
+     */
+    setSize(width: number, height: number): void;
+    /**
+     * Performs initialization tasks.
+     *
+     * @param {WebGLRenderer} renderer - The renderer.
+     * @param {Boolean} alpha - Whether the renderer uses the alpha channel or not.
+     * @param {Number} frameBufferType - The type of the main frame buffers.
+     */
+    initialize(renderer: WebGLRenderer, alpha: boolean, frameBufferType: number): void;
+}
+
+  /**
+   * A Kawase blur pass.
+   */
+   export class KawaseBlurPass extends Pass {
+    /**
+     * An auto sizing flag.
+     *
+     * @type {Number}
+     * @deprecated Use {@link Resolution.AUTO_SIZE} instead.
+     */
+    static get AUTO_SIZE(): number;
+    /**
+     * Constructs a new Kawase blur pass.
+     *
+     * @param {Object} [options] - The options.
+     * @param {Number} [options.resolutionScale=0.5] - Deprecated. Adjust the height or width instead for consistent results.
+     * @param {Number} [options.width=Resolution.AUTO_SIZE] - The blur render width.
+     * @param {Number} [options.height=Resolution.AUTO_SIZE] - The blur render height.
+     * @param {KernelSize} [options.kernelSize=KernelSize.LARGE] - The blur kernel size.
+     */
+    constructor({
+      resolutionScale,
+      width,
+      height,
+      kernelSize,
+    }?: {
+      resolutionScale?: number;
+      width?: number;
+      height?: number;
+      kernelSize?: KernelSize;
+    });
+
+    resolution: Resolution;
+    /**
+     * The blur material.
+     *
+     * @type {KawaseBlurMaterial}
+     */
+    blurMaterial: KawaseBlurMaterial;
+    /**
+     * Indicates whether dithering is enabled.
+     *
+     * @type {Boolean}
+     * @deprecated
+     */
+    dithering: boolean;
+    /**
+     * The kernel size.
+     *
+     * @type {KernelSize}
+     */
+    kernelSize: KernelSize;
+    /**
+     * Returns the resolution settings.
+     *
+     * @deprecated Use resolution instead.
+     * @return {Resolution} The resolution.
+     */
+    getResolution(): Resolution;
+    /**
+     * Sets the render width.
+     *
+     * @type {Number}
+     * @deprecated Use resolution.preferredWidth instead.
+     */
+    set width(arg: number);
+    /**
+     * The current width of the internal render targets.
+     *
+     * @type {Number}
+     * @deprecated Use resolution.width instead.
+     */
+    get width(): number;
+    /**
+     * Sets the render height.
+     *
+     * @type {Number}
+     * @deprecated Use resolution.preferredHeight instead.
+     */
+    set height(arg: number);
+    /**
+     * The current height of the internal render targets.
+     *
+     * @type {Number}
+     * @deprecated Use resolution.height instead.
+     */
+    get height(): number;
+    set scale(arg: number);
+    /**
+     * The current blur scale.
+     *
+     * @type {Number}
+     * @deprecated Use blurMaterial.scale instead.
+     */
+    get scale(): number;
+    /**
+     * Returns the current blur scale.
+     *
+     * @deprecated Use blurMaterial.scale instead.
+     * @return {Number} The scale.
+     */
+    getScale(): number;
+    /**
+     * Sets the blur scale.
+     *
+     * This value influences the overall blur strength and should not be greater than 1. For larger blurs please increase
+     * the kernel size via {@link setKernelSize}!
+     *
+     * Note that the blur strength is closely tied to the resolution. For a smooth transition from no blur to full blur,
+     * set the width or the height to a high enough value.
+     *
+     * @deprecated Use blurMaterial.scale instead.
+     * @param {Number} value - The scale.
+     */
+    setScale(value: number): void;
+    /**
+     * Returns the kernel size.
+     *
+     * @deprecated Use kernelSize instead.
+     * @return {KernelSize} The kernel size.
+     */
+    getKernelSize(): KernelSize;
+    /**
+     * Sets the kernel size.
+     *
+     * Larger kernels require more processing power but scale well with larger render resolutions.
+     *
+     * @deprecated Use kernelSize instead.
+     * @param {KernelSize} value - The kernel size.
+     */
+    setKernelSize(value: KernelSize): void;
+    /**
+     * Returns the current resolution scale.
+     *
+     * @return {Number} The resolution scale.
+     * @deprecated Use resolution instead.
+     */
+    getResolutionScale(): number;
+    /**
+     * Sets the resolution scale.
+     *
+     * @param {Number} scale - The new resolution scale.
+     * @deprecated Use resolution instead.
+     */
+    setResolutionScale(scale: number): void;
+    /**
+     * Blurs the input buffer and writes the result to the output buffer. The input buffer remains intact, unless it's
+     * also used as the output buffer.
+     *
+     * @param {WebGLRenderer} renderer - The renderer.
+     * @param {WebGLRenderTarget} inputBuffer - A frame buffer that contains the result of the previous pass.
+     * @param {WebGLRenderTarget} outputBuffer - A frame buffer that serves as the output render target unless this pass renders to screen.
+     * @param {Number} [deltaTime] - The time between the last frame and the current one in seconds.
+     * @param {Boolean} [stencilTest] - Indicates whether a stencil mask is active.
+     */
+    render(
+      renderer: WebGLRenderer,
+      inputBuffer: WebGLRenderTarget,
+      outputBuffer: WebGLRenderTarget,
+      deltaTime?: number,
+      stencilTest?: boolean
+    ): void;
+  }
+
+  export type BlurPass = KawaseBlurPass;
+
+/*import {Mesh, OrthographicCamera, PlaneBufferGeometry, Scene, ShaderMaterial, UniformsUtils, Vector2} from 'three';
+import {GlowShader} from '../shaders/GlowShader';
+import {Pass} from './Pass.js';
+
+var GlowPass = function (intensity) {
+    Pass.call(this);
+    if (GlowShader === undefined) console.error('THREE.GlowPass relies on THREE.GlowShader');
+    var shader = GlowShader;
+    this.uniforms = UniformsUtils.clone(shader.uniforms);
+    this.material = new ShaderMaterial({
+        uniforms: this.uniforms,
+        vertexShader: shader.vertexShader,
+        fragmentShader: shader.fragmentShader,
+    });
+    this.camera = new OrthographicCamera(-1, 1, 1, -1, 0, 1);
+    this.scene = new Scene();
+    this.quad = new Mesh(new PlaneBufferGeometry(2, 2), null);
+    this.quad.frustumCulled = false; // Avoid getting clipped
+    this.scene.add(this.quad);
+    this.intensity = 0;
+    this.totalTime = 0;
+};
+
+GlowPass.prototype = Object.assign(Object.create(Pass.prototype), {
+    constructor: GlowPass,
+
+    // eslint-disable-next-line no-unused-vars
+    render: function (renderer, writeBuffer, readBuffer, deltaTime, maskActive) {
+        this.totalTime += deltaTime;
+
+        this.uniforms['i'].value = this.intensity;
+        this.uniforms['resolution'].value = new Vector2(readBuffer.width, readBuffer.height);
+        this.uniforms['tex'].value = readBuffer.texture;
+        this.uniforms['time'].value = this.totalTime;
+        this.quad.material = this.material;
+
+        renderer.setRenderTarget(this.renderToScreen ? null : writeBuffer);
+        renderer.render(this.scene, this.camera);
+    },
+});
+
+export {GlowPass};
+*/

@@ -5,7 +5,7 @@ import {grey} from '@mui/material/colors';
 import styled from '@emotion/styled';
 import {Paper, Typography} from '@mui/material';
 import {nanoid} from 'nanoid';
-import { useTheme } from '@mui/material';
+import {useTheme} from '@mui/material';
 
 interface MainProps {
     posts: ReadonlyArray<string>;

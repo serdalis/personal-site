@@ -9,6 +9,7 @@ const Background = () => {
     return (
         <Canvas
             className="three-canvas"
+            gl={{powerPreference: 'high-performance', antialias: false, stencil: false, depth: false}}
             onCreated={({gl}) => {
                 gl.setClearColor(new THREE.Color('#0E1723'));
             }}
