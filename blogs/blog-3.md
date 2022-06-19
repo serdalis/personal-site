@@ -1,4 +1,4 @@
-# Websites Are Hard
+# On the constructing of personal sites.
 
 _June 16, 2022 by [Ricky](/)_
 

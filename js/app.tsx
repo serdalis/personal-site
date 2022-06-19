@@ -1,22 +1,17 @@
-import React, {useEffect, useState} from 'react';
-import {useFrame, useThree, GroupProps} from 'react-three-fiber';
-
-import {Plane} from './components/design/Plane';
+import {useEffect, useState} from 'react';
 import {Sun} from './components/design/Sun';
 import {StarQuater} from './components/design/StarQuater';
 import {EffectComposer, Bloom, GodRays} from '@react-three/postprocessing';
-import {BlendFunction, Resolution, KernelSize} from 'postprocessing';
-import {Group, sRGBEncoding, Clock} from 'three';
+import {sRGBEncoding, Clock, Vector3, Color} from 'three';
+import { GroupProps, useFrame, useThree } from '@react-three/fiber';
+import { Plane } from './components/design/Plane';
 
 export function App() {
     const clock = new Clock();
     const RotationSpeed = 0.025;
     const {camera, gl} = useThree();
     const [light, setLight] = useState();
-    const [q1, setQ1] = useState();
-    const [q2, setQ2] = useState();
-    const [q3, setQ3] = useState();
-    const [q4, setQ4] = useState();
+    const [star, setStar] = useState();
 
     useEffect(() => void (gl.outputEncoding = sRGBEncoding));
 
@@ -24,27 +19,21 @@ export function App() {
         const interval = clock.getDelta();
         const rotationDeltaZ = RotationSpeed * interval;
 
-        if (q1) (q1 as GroupProps).rotateZ(rotationDeltaZ);
-        if (q2) (q2 as GroupProps).rotateZ(rotationDeltaZ);
-        if (q3) (q3 as GroupProps).rotateZ(rotationDeltaZ);
-        if (q4) (q4 as GroupProps).rotateZ(rotationDeltaZ);
+        if (star) (star as GroupProps).rotateZ(rotationDeltaZ);
     });
 
     return (
         <>
-            {/*<Plane color={'#FFFFFF'} />*/}
+            <Plane color={new Color('#000000')} />
             <pointLight intensity={50} position={[0, 0, 0.25]} color={'#2080B0'} decay={0} />
-            {/*@ts-ignore*/}
-            <Sun ref={setLight} position={[0, 0, -0.01]} />
-            {/*@ts-ignore*/}
-            <StarQuater ref={setQ1} position={[0, 0, 0]} initialRotation={0} />
-            {/*@ts-ignore*/}
-            <StarQuater ref={setQ2} position={[0, 0, 0]} initialRotation={90} />
-            {/*@ts-ignore*/}
-            <StarQuater ref={setQ3} position={[0, 0, 0]} initialRotation={180} />
-            {/*@ts-ignore*/}
-            <StarQuater ref={setQ4} position={[0, 0, 0]} initialRotation={270} />
 
+            <Sun ref={setLight} position={[0, 0, -0.01]} />
+            <group ref={setStar as any} castShadow={true}>
+                <StarQuater position={new Vector3(0,0,0)} initialRotation={0} />
+                <StarQuater position={new Vector3(0,0,0)} initialRotation={90} />
+                <StarQuater position={new Vector3(0,0,0)} initialRotation={180} />
+                <StarQuater position={new Vector3(0,0,0)} initialRotation={270} />
+            </group>
             <EffectComposer>
                 {/*<GlowPass attachArray="passes" intensity={0.01} />*/}
                 <Bloom luminanceThreshold={0.01} intensity={2} luminanceSmoothing={0.5} />

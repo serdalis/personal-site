@@ -1,18 +1,27 @@
-import React, {useMemo} from 'react';
-import {useThree} from 'react-three-fiber';
-import {sRGBEncoding, TextureLoader} from 'three';
+import { useThree } from '@react-three/fiber';
+import {useMemo} from 'react';
+import {sRGBEncoding, TextureLoader, Color} from 'three';
 
-export function Plane({color}) {
+interface PlaneProps {
+    color: Color;
+};
+
+interface ImageProps {
+    url: string;
+    opacity: number;
+};
+
+const Plane = ({color}: PlaneProps) => {
     const {viewport} = useThree();
     return (
-        <mesh scale={[viewport.width, viewport.height, 1]} receiveShadow>
+        <mesh scale={[viewport.width, viewport.height, 1]} receiveShadow={true}>
             <planeGeometry attach="geometry" args={[1, 1]} />
             <meshLambertMaterial attach="material" color={color} />
         </mesh>
     );
 }
 
-export function Image({url, opacity, ...props}) {
+const Image = ({url, opacity}: ImageProps) => {
     const {viewport} = useThree();
 
     const texture = useMemo(() => {
@@ -20,7 +29,7 @@ export function Image({url, opacity, ...props}) {
     }, [url]);
 
     return (
-        <mesh {...props} scale={[viewport.width, viewport.height, 1]}>
+        <mesh scale={[viewport.width, viewport.height, 1]}>
             <planeBufferGeometry attach="geometry" args={[5, 5]} />
             <meshLambertMaterial attach="material" transparent opacity={opacity}>
                 <primitive attach="map" object={texture} />
@@ -28,3 +37,5 @@ export function Image({url, opacity, ...props}) {
         </mesh>
     );
 }
+
+export {Plane};

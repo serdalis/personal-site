@@ -1332,10 +1332,10 @@
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.5.tgz#db5a11bf66bdab39569719555b0f76e138d7bd64"
   integrity sha512-9X2obfABZuDVLCgPK9aX0a/x4jaOEweTTWE2+9sr0Qqqevj2Uv5XorvusThmc9XGYpS9yI+fhh8RTafBtGposw==
 
-"@react-three/fiber@latest":
-  version "8.0.24"
-  resolved "https://registry.yarnpkg.com/@react-three/fiber/-/fiber-8.0.24.tgz#842b17bcfa3507d3aeb344cf6dcc494e9e9813fb"
-  integrity sha512-b0wSWf2D0fOpL6LagS8WDBHiR1ApU7ailgBi0BAr5YgU9x3ajrjy9pQL65c6A1Gv0yR9ISuE+vYeL4gW+ZJa/g==
+"@react-three/fiber@^8.0.26":
+  version "8.0.26"
+  resolved "https://registry.yarnpkg.com/@react-three/fiber/-/fiber-8.0.26.tgz#a7e271aedf8626e269346df865bcbb6aceb21e21"
+  integrity sha512-6svPl3YxuNsB9SKJry17rZcgDsF6sVNsY1DF2PrFKxtQk0p9CHAAEP4SczJaOgFlSUsePP78h/r83EsMMC+TVg==
   dependencies:
     "@babel/runtime" "^7.17.8"
     "@types/react-reconciler" "^0.26.7"
@@ -4709,13 +4709,6 @@ react-smooth@^2.0.0:
     fast-equals "^2.0.0"
     raf "^3.4.0"
     react-transition-group "2.9.0"
-
-react-three-fiber@^6.0.13:
-  version "6.0.13"
-  resolved "https://registry.yarnpkg.com/react-three-fiber/-/react-three-fiber-6.0.13.tgz#6dbbc5d8d5fe94c49986e9c71024af7eaf68a441"
-  integrity sha512-uShQnkMVLvnzwf3YzY9mnzCnpmLpvTQkc0ycrtwk8fyjXmZt2695tLn3tufPF6uxq06UKJRKJcjCVCMXyUcEPQ==
-  dependencies:
-    "@react-three/fiber" latest
 
 react-transition-group@2.9.0:
   version "2.9.0"

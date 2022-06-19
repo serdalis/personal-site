@@ -1,6 +1,6 @@
+import { Canvas } from '@react-three/fiber';
 import {createRoot} from 'react-dom/client';
 import * as THREE from 'three';
-import {Canvas} from 'react-three-fiber';
 
 import {App} from './app';
 import Blog from './components/Blog/Blog';
@@ -9,6 +9,7 @@ const Background = () => {
     return (
         <Canvas
             className="three-canvas"
+            shadows={true}
             gl={{powerPreference: 'high-performance', antialias: false, stencil: false, depth: false}}
             onCreated={({gl}) => {
                 gl.setClearColor(new THREE.Color('#0E1723'));
